@@ -1,6 +1,6 @@
 {
   "name": "@sorokchat-messenger/microservices",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Microservices contracts for sorokchat backend",
   "keywords": [
     "sorokchat",
@@ -33,7 +33,10 @@
       "types": "./dist/index.d.ts"
     }
   },
-  "files": ["dist", "generated"],
+  "files": [
+    "dist",
+    "generated"
+  ],
   "devDependencies": {
     "@sorokchat-messenger/core": "^1.0.0",
     "@types/node": "^22.20.2",
