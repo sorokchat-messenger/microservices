@@ -15,6 +15,9 @@
     "type": "git",
     "url": "git+ssh://git@github.com/sorokchat-messenger/microservices.git"
   },
+  "publishConfig": {
+    "access": "public"
+  },
   "license": "MIT",
   "author": "Sorokovsky Andrey <Sorokovsky0809@gmail.com>",
   "type": "module",
