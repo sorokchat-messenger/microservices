@@ -1,0 +1,46 @@
+{
+  "name": "@sorokchat-messenger/microservices",
+  "version": "1.0.0",
+  "description": "Microservices contracts for sorokchat backend",
+  "keywords": [
+    "sorokchat",
+    "backend",
+    "microservices"
+  ],
+  "homepage": "https://github.com/sorokchat-messenger/microservices#readme",
+  "bugs": {
+    "url": "https://github.com/sorokchat-messenger/microservices/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/sorokchat-messenger/microservices.git"
+  },
+  "license": "MIT",
+  "author": "Sorokovsky Andrey <Sorokovsky0809@gmail.com>",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "build": "npm run proto:generate && tsc",
+    "proto:generate": "rm -rf src/generated && mkdir -p src/generated && protoc --plugin=./node_modules/.bin/protoc-gen-ts_proto --ts_proto_out=./src/generated --ts_proto_opt=nestJs=true,snakeToCamel=true,forceLong=string,stringEnums=true,oneof=unions -I ./proto ./proto/*.proto"
+  },
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "files": ["dist", "generated"],
+  "devDependencies": {
+    "@sorokchat-messenger/core": "^1.0.0",
+    "@types/node": "^22.20.2",
+    "prettier": "^3.9.6",
+    "ts-proto": "^2.12.3",
+    "typescript": "^7.0.2"
+  },
+  "peerDependencies": {
+    "@nestjs/common": "^12.0.1",
+    "@nestjs/core": "^12.0.1",
+    "@nestjs/microservices": "^12.0.1"
+  }
+}

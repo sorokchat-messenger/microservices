@@ -1,0 +1,57 @@
+syntax = "proto3";
+
+package authorization.v1;
+
+service AuthorizationService {
+  rpc Register (RegisterRequest) returns (RegisterResponse);
+  rpc Login (LoginRequest) returns (LoginResponse);
+  rpc RefreshTokens (RefreshTokensRequest) returns (RefreshTokensResponse);
+  rpc Profile (ProfileRequest) returns (ProfileResponse);
+}
+
+message RegisterRequest {
+  string          login        = 1;
+  string          password     = 2;
+  optional string display_name = 3;
+}
+
+message RegisterResponse {
+  string access_token  = 1;
+  string refresh_token = 2;
+}
+
+message LoginRequest {
+  string login    = 1;
+  string password = 2;
+}
+
+message LoginResponse {
+  string access_token  = 1;
+  string refresh_token = 2;
+}
+
+message RefreshTokensRequest {
+  string refresh_token = 1;
+}
+
+message RefreshTokensResponse {
+  string access_token  = 1;
+  string refresh_token = 2;
+}
+
+message ProfileRequest {
+  string access_token = 1;
+}
+
+message ProfileResponse {
+  string          login        = 1;
+  string          password     = 2;
+  optional string display_name = 3;
+  Role            role         = 4;
+}
+
+enum Role {
+  USER  = 0;
+  PRO   = 1;
+  ADMIN = 2;
+}
