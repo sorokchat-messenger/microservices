@@ -16,28 +16,28 @@ service ChatsService {
 }
 
 message CreateChatRequest {
-  int64  actor_id    = 1;
+  int32  actor_id    = 1;
   string name        = 2;
   string description = 3;
 }
 
 message CreateChatResponse {
-  int64 id = 1;
+  int32 id = 1;
 }
 
 message UpdateChatRequest {
-  int64           id          = 1;
+  int32           id          = 1;
   optional string name        = 2;
   optional string description = 3;
 }
 
 message DeleteChatRequest {
-  int64 id       = 1;
-  int64 actor_id = 2;
+  int32 id       = 1;
+  int32 actor_id = 2;
 }
 
 message GetChatByIdRequest {
-  int64 id = 1;
+  int32 id = 1;
 }
 
 message GetChatByIdResponse {
@@ -46,8 +46,8 @@ message GetChatByIdResponse {
 
 message GetChatsByNameRequest {
   string         name   = 1;
-  optional int64 limit  = 2;
-  optional int64 offset = 3;
+  optional int32 limit  = 2;
+  optional int32 offset = 3;
 }
 
 message GetChatsByNameResponse {
@@ -55,14 +55,14 @@ message GetChatsByNameResponse {
 }
 
 message ChatResponse {
-  int64                        id           = 1;
+  int32                        id           = 1;
   string                       name         = 2;
   string                       description  = 3;
   repeated ParticipantResponse participants = 4;
 }
 
 message ParticipantResponse {
-  int64    user_id      = 1;
+  int32    user_id      = 1;
   string   login        = 2;
   string   display_name = 3;
   ChatRole role         = 4;
@@ -74,20 +74,20 @@ enum ChatRole {
 }
 
 message AddMemberToChatRequest {
-  int64 chat_id  = 1;
-  int64 user_id  = 2;
-  int64 actor_id = 3;
+  int32 chat_id  = 1;
+  int32 user_id  = 2;
+  int32 actor_id = 3;
 }
 
 message RemoveMemberFromChatRequest {
-  int64 chat_id  = 1;
-  int64 user_id  = 2;
-  int64 actor_id = 3;
+  int32 chat_id  = 1;
+  int32 user_id  = 2;
+  int32 actor_id = 3;
 }
 
 message ChangeRoleRequest {
-  int64    chat_id  = 1;
-  int64    user_id  = 2;
-  int64    actor_id = 3;
+  int32    chat_id  = 1;
+  int32    user_id  = 2;
+  int32    actor_id = 3;
   ChatRole role     = 4;
 }
