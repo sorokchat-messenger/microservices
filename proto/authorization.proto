@@ -44,9 +44,10 @@ message ProfileRequest {
 }
 
 message ProfileResponse {
-  string          login        = 1;
-  optional string display_name = 2;
-  Role            role         = 3;
+  int64           id           = 1;
+  string          login        = 2;
+  optional string display_name = 3;
+  Role            role         = 4;
 }
 
 enum Role {

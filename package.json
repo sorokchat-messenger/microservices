@@ -25,7 +25,7 @@
   "types": "./dist/index.d.ts",
   "scripts": {
     "build": "npm run proto:generate && tsc",
-    "proto:generate": "rm -rf src/generated && mkdir -p src/generated && protoc --plugin=./node_modules/.bin/protoc-gen-ts_proto --ts_proto_out=./src/generated --ts_proto_opt=nestJs=true,snakeToCamel=true,forceLong=string,stringEnums=true,oneof=unions -I ./proto ./proto/*.proto"
+    "proto:generate": "rm -rf src/generated && mkdir -p src/generated && protoc --plugin=./node_modules/.bin/protoc-gen-ts_proto --ts_proto_out=./src/generated --ts_proto_opt=nestJs=true,snakeToCamel=true,forceLong=string,stringEnums=true,oneof=unions,importSuffix=.js, -I ./proto ./proto/*.proto && npx fix-verbatim-module-syntax ./tsconfig.json"
   },
   "exports": {
     ".": {
@@ -41,7 +41,9 @@
   "devDependencies": {
     "@sorokchat-messenger/core": "^1.0.0",
     "@types/node": "^22.20.2",
+    "fix-verbatim-module-syntax": "^1.0.0",
     "prettier": "^3.9.6",
+    "protoc": "^36.2.0",
     "ts-proto": "^2.12.3",
     "typescript": "^7.0.2"
   },

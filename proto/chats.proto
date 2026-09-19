@@ -1,0 +1,93 @@
+syntax = "proto3";
+
+package chats.v1;
+
+import "google/protobuf/empty.proto";
+
+service ChatsService {
+  rpc CreateChat (CreateChatRequest) returns (CreateChatResponse);
+  rpc UpdateChat (UpdateChatRequest) returns (google.protobuf.Empty);
+  rpc DeleteChat (DeleteChatRequest) returns (google.protobuf.Empty);
+  rpc GetChatById (GetChatByIdRequest) returns (GetChatByIdResponse);
+  rpc GetChatsByName (GetChatsByNameRequest) returns (GetChatsByNameResponse);
+  rpc AddMemberToChat (AddMemberToChatRequest) returns (google.protobuf.Empty);
+  rpc RemoveMemberFromChat (RemoveMemberFromChatRequest) returns (google.protobuf.Empty);
+  rpc ChangeRole (ChangeRoleRequest) returns (google.protobuf.Empty);
+}
+
+message CreateChatRequest {
+  int64  actor_id    = 1;
+  string name        = 2;
+  string description = 3;
+}
+
+message CreateChatResponse {
+  int64 id = 1;
+}
+
+message UpdateChatRequest {
+  int64           id          = 1;
+  optional string name        = 2;
+  optional string description = 3;
+}
+
+message DeleteChatRequest {
+  int64 id       = 1;
+  int64 actor_id = 2;
+}
+
+message GetChatByIdRequest {
+  int64 id = 1;
+}
+
+message GetChatByIdResponse {
+  ChatResponse chat = 1;
+}
+
+message GetChatsByNameRequest {
+  string         name   = 1;
+  optional int64 limit  = 2;
+  optional int64 offset = 3;
+}
+
+message GetChatsByNameResponse {
+  repeated ChatResponse chats = 1;
+}
+
+message ChatResponse {
+  int64                        id           = 1;
+  string                       name         = 2;
+  string                       description  = 3;
+  repeated ParticipantResponse participants = 4;
+}
+
+message ParticipantResponse {
+  int64    user_id      = 1;
+  string   login        = 2;
+  string   display_name = 3;
+  ChatRole role         = 4;
+}
+
+enum ChatRole {
+  MEMBER = 0;
+  ADMIN  = 1;
+}
+
+message AddMemberToChatRequest {
+  int64 chat_id  = 1;
+  int64 user_id  = 2;
+  int64 actor_id = 3;
+}
+
+message RemoveMemberFromChatRequest {
+  int64 chat_id  = 1;
+  int64 user_id  = 2;
+  int64 actor_id = 3;
+}
+
+message ChangeRoleRequest {
+  int64    chat_id  = 1;
+  int64    user_id  = 2;
+  int64    actor_id = 3;
+  ChatRole role     = 4;
+}
