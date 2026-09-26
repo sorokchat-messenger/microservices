@@ -3,7 +3,7 @@ import type { Service } from "../../types/index.js";
 import { PROTO_PATH } from "../path.js";
 
 const name: string = "ChatsService";
-const packageName: string = "authorization.v1";
+const packageName: string = "chats.v1";
 const path: string = join(PROTO_PATH, "chats.proto");
 
 export const CHATS_SERVICE = {
