@@ -12,7 +12,8 @@ service ChatsService {
   rpc GetChatsByName (GetChatsByNameRequest) returns (GetChatsByNameResponse);
   rpc AddMemberToChat (AddMemberToChatRequest) returns (google.protobuf.Empty);
   rpc RemoveMemberFromChat (RemoveMemberFromChatRequest) returns (google.protobuf.Empty);
-  rpc ChangeRole (ChangeRoleRequest) returns (google.protobuf.Empty);
+  rpc GrantMember (GrantMemberRequest) returns (google.protobuf.Empty);
+  rpc RevokeMember (RevokeMemberRequest) returns (google.protobuf.Empty);
 }
 
 message CreateChatRequest {
@@ -29,6 +30,7 @@ message UpdateChatRequest {
   string          id          = 1;
   optional string name        = 2;
   optional string description = 3;
+  string          actor_id    = 4;
 }
 
 message DeleteChatRequest {
@@ -85,9 +87,15 @@ message RemoveMemberFromChatRequest {
   string actor_id = 3;
 }
 
-message ChangeRoleRequest {
+message GrantMemberRequest {
   string   chat_id  = 1;
   string   user_id  = 2;
   string   actor_id = 3;
   ChatRole role     = 4;
+}
+
+message RevokeMemberRequest {
+  string chat_id  = 1;
+  string user_id  = 2;
+  string actor_id = 3;
 }
