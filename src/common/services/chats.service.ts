@@ -15,7 +15,8 @@ export const CHATS_SERVICE = {
   GET_CHATS_BY_NAME: "GetChatsByName",
   ADD_MEMBER_TO_CHAT: "AddMemberToChat",
   REMOVE_MEMBER_FROM_CHAT: "RemoveMemberFromChat",
-  CHANGE_ROLE: "ChangeRole",
+  GRANT_MEMBER: "GrantMember",
+  REVOKE_MEMBER: "RevokeMember",
 } as const;
 
 export const CHATS_CLIENT: Omit<Service, "url"> = {
