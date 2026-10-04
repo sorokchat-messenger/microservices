@@ -25,7 +25,7 @@ export {
   CHATS_SERVICE_NAME,
   CHATS_V1_PACKAGE_NAME,
   type GrantMemberRequest,
-  type RevokeMemberRequest
+  type RevokeMemberRequest.
   type ChatResponse,
   ChatRole,
   type ChatsServiceClient,
