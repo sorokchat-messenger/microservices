@@ -10,6 +10,7 @@ service ChatsService {
   rpc DeleteChat (DeleteChatRequest) returns (google.protobuf.Empty);
   rpc GetChatById (GetChatByIdRequest) returns (GetChatByIdResponse);
   rpc GetChatsByName (GetChatsByNameRequest) returns (GetChatsByNameResponse);
+  rpc GetChatsByUser(GetChatsByUserRequest) returns (GetChatsByUserResponse);
   rpc AddMemberToChat (AddMemberToChatRequest) returns (google.protobuf.Empty);
   rpc RemoveMemberFromChat (RemoveMemberFromChatRequest) returns (google.protobuf.Empty);
   rpc GrantMember (GrantMemberRequest) returns (google.protobuf.Empty);
@@ -44,6 +45,16 @@ message GetChatByIdRequest {
 
 message GetChatByIdResponse {
   ChatResponse chat = 1;
+}
+
+message GetChatsByUserRequest {
+  string         userId = 1;
+  optional int32 limit  = 2;
+  optional int32 offset = 3;
+}
+
+message GetChatsByUserResponse {
+  repeated ChatResponse chats = 1;
 }
 
 message GetChatsByNameRequest {
