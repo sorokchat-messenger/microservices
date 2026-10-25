@@ -41,4 +41,6 @@ export {
   type ParticipantResponse,
   type RemoveMemberFromChatRequest,
   type UpdateChatRequest,
+  type GetChatsByUserRequest,
+  type GetChatsByUserResponse
 } from "./generated/chats.js";
