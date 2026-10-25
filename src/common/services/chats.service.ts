@@ -13,6 +13,7 @@ export const CHATS_SERVICE = {
   DELETE_CHAT: "DeleteChat",
   GET_CHAT_BY_ID: "GetChatById",
   GET_CHATS_BY_NAME: "GetChatsByName",
+  GET_CHATS_BY_USER: "GetChatsByUser",
   ADD_MEMBER_TO_CHAT: "AddMemberToChat",
   REMOVE_MEMBER_FROM_CHAT: "RemoveMemberFromChat",
   GRANT_MEMBER: "GrantMember",
