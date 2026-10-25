@@ -58,9 +58,10 @@ message GetChatsByUserResponse {
 }
 
 message GetChatsByNameRequest {
-  string         name   = 1;
-  optional int32 limit  = 2;
-  optional int32 offset = 3;
+  string         name     = 1;
+  optional int32 limit    = 2;
+  optional int32 offset   = 3;
+  string         actor_id = 4;
 }
 
 message GetChatsByNameResponse {
