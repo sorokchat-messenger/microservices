@@ -27,7 +27,9 @@ message GetUserByIdRequest {
 }
 
 message GetUsersByTermRequest {
-  string term = 1;
+  string term   = 1;
+  int32  limit  = 2;
+  int32  offset = 3;
 }
 
 message GetUsersByTermResponse {
@@ -43,7 +45,7 @@ message UpdateUserRequest {
 
 message DeleteUserRequest {
   string actor_id = 1;
-  string user_id = 2;
+  string user_id  = 2;
 }
 
 message GetUserResponse {
