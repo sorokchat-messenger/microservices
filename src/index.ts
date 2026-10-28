@@ -58,6 +58,8 @@ export {
   type UpdateUserRequest,
   type UsersServiceClient,
   type UsersServiceController,
+  type CheckCredentialsRequest,
+  type CheckCredentialsResponse,
   UsersServiceControllerMethods,
   protobufPackage as USERS_PACKAGE
 } from './generated/users.js';

@@ -12,7 +12,8 @@ export const USERS_SERVICE = {
     GET_BY_ID: "GetById",
     GET_BY_TERM: "GetByTerm",
     UPDATE: "Update",
-    DELETE: "Delete"
+    DELETE: "Delete",
+    CHECK_CREDENTIALS: "CheckCredentials"
 } as const;
 
 export const USERS_CLIENT: Omit<Service, "url"> = {
