@@ -1,0 +1,59 @@
+syntax = "proto3";
+
+package users.v1;
+
+import "google/protobuf/empty.proto";
+
+service UsersService {
+  rpc Create(CreateUserRequest) returns (CreateUserResponse);
+  rpc GetById(GetUserByIdRequest) returns (GetUserResponse);
+  rpc GetByTerm(GetUsersByTermRequest) returns (GetUsersByTermResponse);
+  rpc Update(UpdateUserRequest) returns (google.protobuf.Empty);
+  rpc Delete(DeleteUserRequest) returns (google.protobuf.Empty);
+}
+
+message CreateUserRequest {
+  string          login        = 1;
+  string          password     = 2;
+  optional string display_name = 3;
+}
+
+message CreateUserResponse {
+  string id = 1;
+}
+
+message GetUserByIdRequest {
+  string id = 1;
+}
+
+message GetUsersByTermRequest {
+  string term = 1;
+}
+
+message GetUsersByTermResponse {
+  repeated GetUserResponse users = 1;
+}
+
+message UpdateUserRequest {
+  string          actor_id     = 1;
+  string          user_id      = 2;
+  optional string login        = 3;
+  optional string display_name = 4;
+}
+
+message DeleteUserRequest {
+  string actor_id = 1;
+  string user_id = 2;
+}
+
+message GetUserResponse {
+  string          login        = 1;
+  optional string display_name = 2;
+  Role            role         = 3;
+}
+
+enum Role {
+  USER  = 0;
+  PRO   = 2;
+  ADMIN = 3;
+}

@@ -17,7 +17,6 @@ export {
   type RefreshTokensResponse,
   type RegisterRequest,
   type RegisterResponse,
-  Role,
 } from "./generated/authorization.js";
 export {
   protobufPackage as CHATS_PACKAGE,
@@ -44,3 +43,21 @@ export {
   type GetChatsByUserRequest,
   type GetChatsByUserResponse
 } from "./generated/chats.js";
+
+export {
+  type CreateUserRequest,
+  type CreateUserResponse,
+  type DeleteUserRequest,
+  type GetUserByIdRequest,
+  type GetUserResponse,
+  type GetUsersByTermRequest,
+  type GetUsersByTermResponse,
+  Role,
+  USERS_SERVICE_NAME,
+  USERS_V1_PACKAGE_NAME,
+  type UpdateUserRequest,
+  type UsersServiceClient,
+  type UsersServiceController,
+  UsersServiceControllerMethods,
+  protobufPackage as USERS_PACKAGE
+} from './generated/users.js';
