@@ -62,7 +62,7 @@ message GetUserResponse {
   string          login        = 1;
   optional string display_name = 2;
   Role            role         = 3;
-  string            id           = 4;
+  string          id           = 4;
 }
 
 enum Role {
