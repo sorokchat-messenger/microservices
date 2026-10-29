@@ -1,6 +1,6 @@
 {
   "name": "@sorokchat-messenger/microservices",
-  "version": "1.0.21",
+  "version": "1.0.22",
   "description": "Microservices contracts for sorokchat backend",
   "keywords": [
     "sorokchat",
