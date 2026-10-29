@@ -20,7 +20,7 @@ message CreateUserRequest {
 }
 
 message CreateUserResponse {
-  string id = 1;
+  GetUserResponse user = 1;
 }
 
 message GetUserByIdRequest {
@@ -55,7 +55,7 @@ message CheckCredentialsRequest {
 }
 
 message CheckCredentialsResponse {
-  bool ok = 1;
+  optional GetUserResponse user = 1;
 }
 
 message GetUserResponse {
