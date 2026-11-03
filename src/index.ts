@@ -63,3 +63,18 @@ export {
   UsersServiceControllerMethods,
   protobufPackage as USERS_PACKAGE
 } from './generated/users.js';
+
+export {
+  type ConsumeKeyPackageRequest,
+  type ConsumeKeyPackageResponse,
+  KEYS_SERVICE_NAME,
+  KEYS_V1_PACKAGE_NAME,
+  type KeyPackageDto,
+  type KeysServiceClient,
+  type KeysServiceController,
+  KeysServiceControllerMethods,
+  type RegisterIdentityKeyRequest,
+  type RegisterIdentityKeyResponse,
+  type UploadKeyPackagesRequest,
+  protobufPackage as KEYS_PACKAGE,
+} from './generated/keys.js'; 

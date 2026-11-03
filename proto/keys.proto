@@ -1,0 +1,50 @@
+syntax = "proto3";
+
+package keys.v1;
+
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/empty.proto";
+
+service KeysService {
+  rpc RegisterIdentityKey (RegisterIdentityKeyRequest) returns (RegisterIdentityKeyResponse);
+  rpc UploadKeyPackages (UploadKeyPackagesRequest) returns (google.protobuf.Empty);
+  rpc ConsumeKeyPackage (ConsumeKeyPackageRequest) returns (ConsumeKeyPackageResponse);
+}
+
+message KeyPackageDto {
+  string init_key       = 1;
+  string signature      = 2;
+  bool   is_last_resort = 3;
+}
+
+message RegisterIdentityKeyRequest {
+  string user_id      = 1;
+  string identity_key = 2;
+}
+
+message RegisterIdentityKeyResponse {
+  string                    id           = 1;
+  string                    user_id      = 2;
+  string                    identity_key = 3;
+  google.protobuf.Timestamp created_at   = 4;
+}
+
+message UploadKeyPackagesRequest {
+  string                 user_id      = 1;
+  string                 identity_key = 2;
+  repeated KeyPackageDto packages     = 3;
+}
+
+message ConsumeKeyPackageRequest {
+  string user_id = 1;
+}
+
+message ConsumeKeyPackageResponse {
+  string                    id             = 1;
+  string                    user_id        = 2;
+  string                    identity_key   = 3;
+  string                    init_key       = 4;
+  string                    signature      = 5;
+  bool                      is_last_resort = 6;
+  google.protobuf.Timestamp created_at     = 7;
+}
