@@ -1,6 +1,6 @@
 import { type DynamicModule, Module } from "@nestjs/common";
 import { ClientsModule, Transport, type RmqOptions } from "@nestjs/microservices";
-import { RmqService } from "./rmq.service.js";
+import { RMQ_NAME, RmqService } from "./rmq.service.js";
 
 export interface RmqModuleOptions {
     queue: string;
@@ -22,8 +22,6 @@ const DEFAULT_RMQ_OPTIONS: Partial<RmqModuleOptions> = {
     },
     prefetchCount: 1,
 };
-
-export const RMQ_NAME: string = "RMQ_CLIENT";
 
 @Module({})
 export class RmqModule {

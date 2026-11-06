@@ -1,6 +1,5 @@
 import { Inject, Injectable } from "@nestjs/common";
 import { firstValueFrom, type Observable } from "rxjs";
-import { RMQ_NAME } from "./rmq.module.js";
 import { ClientProxy } from "@nestjs/microservices";
 
 export interface RmqEmitOptions {
@@ -15,6 +14,8 @@ export interface RmqEnvelope<T = unknown> {
     headers?: Record<string, unknown>;
     data: T;
 }
+
+export const RMQ_NAME: string = "RMQ_CLIENT";
 
 @Injectable()
 export class RmqService {
