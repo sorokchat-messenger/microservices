@@ -1,4 +1,4 @@
-import { Inject, Injectable } from "@nestjs/common";
+import { Inject, Injectable, OnModuleInit } from "@nestjs/common";
 import { firstValueFrom, type Observable } from "rxjs";
 import { ClientProxy } from "@nestjs/microservices";
 
@@ -18,7 +18,7 @@ export interface RmqEnvelope<T = unknown> {
 export const RMQ_NAME: string = "RMQ_CLIENT";
 
 @Injectable()
-export class RmqService {
+export class RmqService implements OnModuleInit {
     public constructor(
         @Inject(RMQ_NAME) private readonly client: ClientProxy
     ) { }
@@ -27,9 +27,14 @@ export class RmqService {
         return new RmqService(client);
     }
 
-    public emit<Payload = unknown>(pattern: string, payload: Payload, options?: RmqEmitOptions): Observable<void> {
+    public async onModuleInit(): Promise<void> {
+        await this.client.connect();
+    }
+
+    public async emit<Payload = unknown>(pattern: string, payload: Payload, options?: RmqEmitOptions): Promise<void> {
         const envelope = this.createEnvelope(payload, options);
-        return this.client.emit<void, RmqEnvelope<Payload>>(pattern, envelope);
+        const source$: Observable<void> = this.client.emit<void, RmqEnvelope<Payload>>(pattern, envelope);
+        await firstValueFrom(source$);
     }
 
     public async send<Result = unknown, Input = unknown>(pattern: string, payload: Input, options?: RmqEmitOptions): Promise<Result> {
