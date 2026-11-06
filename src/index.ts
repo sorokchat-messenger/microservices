@@ -2,6 +2,7 @@ export * from "./types/index.js";
 export * from "./common/index.js";
 export * from "./server/index.js";
 export * from "./client/index.js";
+export * from './rmq/index.js';
 export {
   protobufPackage as AUTHORIZATION_PACKAGE,
   AUTHORIZATION_SERVICE_NAME,
